@@ -52,7 +52,7 @@ public class LlsLoginCommand implements Command {
         }
         llsPlayer.status = LlsPlayer.Status.LOGGED_IN;
         player.sendMessage(Component.translatable("lls-manager.command.lls_login.success", NamedTextColor.GREEN));
-        Optional<RegisteredServer> registeredServerOptional = llsManager.server.getServer(llsPlayer.getLastServerName());
+        Optional<RegisteredServer> registeredServerOptional = llsManager.server.getServer(llsManager.config.getRememberLastServer() ? llsPlayer.getLastServerName() : null);
         registeredServerOptional.ifPresent(registeredServer -> player.createConnectionRequest(registeredServer).connect());
         return 1;
     }

@@ -18,6 +18,9 @@ public class PlayerChooseInitialServerEventHandler implements EventHandler<Playe
         LlsPlayer llsPlayer = llsManager.getLlsPlayer(event.getPlayer());
         String serverName;
         if (llsPlayer.getOnlineMode()) {
+            if (llsManager.config.getRememberLastServer()) {
+                return;
+            }
             serverName = llsPlayer.getLastServerName();
         } else {
             serverName = llsManager.config.getAuthServerName();

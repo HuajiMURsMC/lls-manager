@@ -140,6 +140,15 @@ public class Config extends AbstractConfig<Config.ConfigData> {
         return save();
     }
 
+    public boolean getRememberLastServer() {
+        return config.rememberLastServer;
+    }
+
+    public boolean setRememberLastServer(boolean status) {
+        config.rememberLastServer = status;
+        return save();
+    }
+
     public static class ConfigData {
         // 接受聊天信息的 channel
         private final ConcurrentLinkedQueue<String> chatMessageChannelList = new ConcurrentLinkedQueue<>();
@@ -169,6 +178,8 @@ public class Config extends AbstractConfig<Config.ConfigData> {
         private String authServerName = "lls-auth";
         // 启用小地图同步
         private boolean minimapWorldSync = false;
+        // 记住上次连接的服务器
+        private boolean rememberLastServer = true;
 
 
         public ConfigData() {
